@@ -11,11 +11,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+          primaryColor: Colors.blue[900],
+          accentColor: Colors.purple[500],
+          brightness: Brightness.dark),
       home: Scaffold(
-        body: MyHomePage(title: 'Flutter Demo Home Page'),
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+        ),
+        body: Container(child: MyHomePage(title: 'Flutter Demo Home Page')),
         bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Colors.black,
           items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.home),

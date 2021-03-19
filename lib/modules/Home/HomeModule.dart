@@ -1,46 +1,70 @@
+import 'package:capsule/modules/Home/components/Increment.dart';
 import 'package:flutter/material.dart';
 
-class HomeModule extends StatefulWidget {
+class HomeModule extends StatelessWidget {
   HomeModule({Key key}) : super(key: key);
 
   @override
-  _HomeModuleState createState() => _HomeModuleState();
-}
-
-class _HomeModuleState extends State<HomeModule> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('toto'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+    return Column(
+      children: [
+        Container(
+          margin: EdgeInsets.symmetric(vertical: 16),
+          child: Text(
+            'data',
+            style: TextStyle(fontSize: 32),
+          ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ),
+        Container(
+          height: 400,
+          margin: EdgeInsets.only(bottom: 32),
+          child: GridView.count(
+            crossAxisCount: 2,
+            shrinkWrap: false,
+            primary: true,
+            crossAxisSpacing: 8,
+            mainAxisSpacing: 8,
+            children: [
+              Container(
+                padding: EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.grey[800]),
+                child: Increment(),
+              ),
+              Container(
+                padding: EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.grey[800]),
+                child: Increment(),
+              ),
+              Container(
+                padding: EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.grey[800]),
+                child: Increment(),
+              ),
+              Container(
+                padding: EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.grey[800]),
+                child: Increment(),
+              )
+            ],
+            physics: ClampingScrollPhysics(),
+          ),
+        ),
+        Container(
+          height: 50,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.grey,
+          ),
+        )
+      ],
     );
   }
 }
