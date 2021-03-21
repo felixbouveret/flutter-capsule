@@ -14,7 +14,7 @@ class BottomNavigationItem extends StatelessWidget {
   final Object currentTab;
   final Object itemTab;
   final String label;
-  final Widget icon;
+  final Object icon;
   final Function onTap;
 
   @override
@@ -24,7 +24,7 @@ class BottomNavigationItem extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         decoration: currentTab == itemTab
             ? BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(32),
                 color: Colors.grey[800],
               )
             : null,
@@ -34,11 +34,17 @@ class BottomNavigationItem extends StatelessWidget {
           },
           child: Row(
             children: [
-              icon,
+              Icon(
+                icon,
+                color: currentTab == itemTab ? Colors.white : Colors.grey[800],
+              ),
               currentTab == itemTab
                   ? Padding(
                       padding: EdgeInsets.only(left: 8.0),
-                      child: Text(label),
+                      child: Text(
+                        label,
+                        style: TextStyle(fontWeight: FontWeight.w500),
+                      ),
                     )
                   : Text('')
             ],

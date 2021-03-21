@@ -7,7 +7,7 @@ void main() {
   runApp(App());
 }
 
-enum TabItem { home, settings }
+enum TabItem { home, settings, profile, playlist }
 
 class App extends StatefulWidget {
   App({Key key}) : super(key: key);
@@ -20,7 +20,6 @@ class _AppState extends State<App> {
   TabItem currentTab = TabItem.home;
 
   void _selectTab(TabItem tabItem) {
-    print(currentTab);
     setState(() {
       currentTab = tabItem;
     });
