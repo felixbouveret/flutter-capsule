@@ -10,11 +10,7 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: HomeModule(),
-        floatingActionButton: FloatingActionButton(
-          tooltip: 'Increment',
-          onPressed: () {},
-          child: Icon(Icons.add),
-        ));
+      body: HomeModule(),
+    );
   }
 }
