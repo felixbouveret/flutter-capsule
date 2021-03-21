@@ -34,11 +34,11 @@ class _AppState extends State<App> {
           accentColor: Colors.purple[500],
           brightness: Brightness.dark),
       home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-        ),
-        body: DirtyRouter(
-          currentTab: currentTab,
+        body: Container(
+          margin: EdgeInsets.only(top: 64),
+          child: DirtyRouter(
+            currentTab: currentTab,
+          ),
         ),
         bottomNavigationBar: BottomNavigationModule(
           currentTab: currentTab,
