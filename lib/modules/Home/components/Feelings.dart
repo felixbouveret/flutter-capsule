@@ -11,11 +11,8 @@ class Feelings extends StatefulWidget {
 class _FeelingsState extends State<Feelings> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: Colors.grey,
-      ),
+    return Expanded(
+      child: Image.asset('assets/images/samples/moodPlaceholder.png'),
     );
   }
 }

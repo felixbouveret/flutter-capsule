@@ -60,7 +60,6 @@ class _DetailsState extends State<Details> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 24),
       child: Column(
         children: [
           Wrapper(

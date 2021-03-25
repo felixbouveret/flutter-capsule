@@ -14,6 +14,7 @@ class BottomNavigationModule extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.only(top: 12),
       padding: EdgeInsets.only(top: 19, bottom: 16, left: 32, right: 32),
       decoration: BoxDecoration(
           color: Colors.black,
