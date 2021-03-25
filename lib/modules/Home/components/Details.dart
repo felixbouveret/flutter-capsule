@@ -43,7 +43,7 @@ class _DetailsState extends State<Details> {
     for (var i = 0; i < detailsList.length; i++) {
       var elem = detailsList[i];
       children.add(new DetailsCard(
-        backgroundColor: elem.backgroundColor,
+        colors: elem.backgroundColor,
         image: elem.image,
         label: elem.label,
         remove: () {
@@ -61,10 +61,10 @@ class _DetailsState extends State<Details> {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(top: 24),
-      child: Wrapper(
-        child: Column(
-          children: [
-            Align(
+      child: Column(
+        children: [
+          Wrapper(
+            child: Align(
               alignment: Alignment.topLeft,
               child: Text(
                 'Add details',
@@ -72,7 +72,9 @@ class _DetailsState extends State<Details> {
                 style: TextStyle(fontSize: 17),
               ),
             ),
-            Container(
+          ),
+          Wrapper(
+            child: Container(
               margin: EdgeInsets.only(top: 2),
               child: Align(
                 alignment: Alignment.topLeft,
@@ -83,25 +85,58 @@ class _DetailsState extends State<Details> {
                 ),
               ),
             ),
-            Container(
-              height: 154,
-              margin: EdgeInsets.only(top: 24),
-              child: Row(
-                children: [
-                  Container(
-                      margin: EdgeInsets.only(right: 16), child: SideButton()),
-                  detailsList.length < 1 ? DetailsCardPlaceholder() : details
-                ],
-              ),
+          ),
+          Container(
+            height: 154,
+            margin: EdgeInsets.only(top: 24),
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: [
+                Container(
+                    margin: EdgeInsets.only(right: 16, left: 20),
+                    child: SideButton()),
+                detailsList.length > 0
+                    ? DetailsCardPlaceholder()
+                    : Row(
+                        children: [
+                          DetailsCard(
+                            image:
+                                Image.asset('assets/images/samples/cloud.png'),
+                            colors: [Colors.blue[700], Colors.blue[800]],
+                            label: 'It is sunny',
+                            remove: () {
+                              _removeDetail('ede');
+                            },
+                          ),
+                          SizedBox(
+                            width: 16,
+                          ),
+                          DetailsCard(
+                            image:
+                                Image.asset('assets/images/samples/donut.png'),
+                            colors: [Colors.purple[300], Colors.purple],
+                            label: 'At Starbucks',
+                            remove: () {
+                              _removeDetail('ede');
+                            },
+                          ),
+                          SizedBox(
+                            width: 16,
+                          ),
+                        ],
+                      )
+              ],
             ),
-            Container(
+          ),
+          Wrapper(
+            child: Container(
               margin: EdgeInsets.only(top: 16),
               child: CustomButton(
                 label: "Continue the experience",
               ),
-            )
-          ],
-        ),
+            ),
+          )
+        ],
       ),
     );
   }
