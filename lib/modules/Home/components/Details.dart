@@ -5,6 +5,7 @@ import 'package:capsule/modules/Home/components/DetailsCard.dart';
 import 'package:capsule/modules/Home/components/DetailsCardPlaceholder.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:uuid/uuid.dart';
 
 class Details extends StatefulWidget {
   Details({Key key}) : super(key: key);
@@ -14,12 +15,12 @@ class Details extends StatefulWidget {
 }
 
 class Detail {
-  Color backgroundColor;
+  List<Color> colors;
   Widget image;
   String label;
   String id;
 
-  Detail(this.backgroundColor, this.image, this.label, this.id);
+  Detail(this.colors, this.image, this.label, this.id);
 }
 
 class _DetailsState extends State<Details> {
@@ -27,7 +28,7 @@ class _DetailsState extends State<Details> {
 
   void _addDetail(Object data) {
     setState(() {
-      detailsList.addAll(data);
+      detailsList.add(data);
     });
   }
 
@@ -35,6 +36,7 @@ class _DetailsState extends State<Details> {
     setState(() {
       detailsList.removeWhere((item) => item.id == id);
     });
+    print(id);
   }
 
   Widget details() {
@@ -42,23 +44,32 @@ class _DetailsState extends State<Details> {
 
     for (var i = 0; i < detailsList.length; i++) {
       var elem = detailsList[i];
-      children.add(new DetailsCard(
-        colors: elem.backgroundColor,
-        image: elem.image,
-        label: elem.label,
-        remove: () {
-          _removeDetail(elem.id);
-        },
-      ));
+      children.addAll([
+        SizedBox(
+          width: 16,
+        ),
+        new DetailsCard(
+          colors: elem.colors,
+          image: elem.image,
+          label: elem.label,
+          remove: () {
+            _removeDetail(elem.id);
+          },
+        ),
+      ]);
     }
 
-    return Row(
-      children: children,
+    return Container(
+      margin: EdgeInsets.only(right: 20),
+      child: Row(
+        children: children,
+      ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    var uuid = Uuid();
     return Container(
       child: Column(
         children: [
@@ -92,38 +103,24 @@ class _DetailsState extends State<Details> {
               scrollDirection: Axis.horizontal,
               children: [
                 Container(
-                    margin: EdgeInsets.only(right: 16, left: 20),
-                    child: SideButton()),
-                detailsList.length > 0
-                    ? DetailsCardPlaceholder()
-                    : Row(
-                        children: [
-                          DetailsCard(
-                            image:
-                                Image.asset('assets/images/samples/cloud.png'),
-                            colors: [Colors.blue[700], Colors.blue[800]],
-                            label: 'It is sunny',
-                            remove: () {
-                              _removeDetail('ede');
-                            },
-                          ),
-                          SizedBox(
-                            width: 16,
-                          ),
-                          DetailsCard(
-                            image:
-                                Image.asset('assets/images/samples/donut.png'),
-                            colors: [Colors.purple[300], Colors.purple],
-                            label: 'At Starbucks',
-                            remove: () {
-                              _removeDetail('ede');
-                            },
-                          ),
-                          SizedBox(
-                            width: 16,
-                          ),
-                        ],
-                      )
+                    margin: EdgeInsets.only(left: 20),
+                    child: SideButton(
+                      action: () {
+                        _addDetail(new Detail(
+                            [Colors.blue[700], Colors.blue[800]],
+                            Image.asset('assets/images/samples/cloud.png'),
+                            'It is sunny',
+                            uuid.v4()));
+                      },
+                    )),
+                detailsList.length <= 0
+                    ? Row(children: [
+                        SizedBox(
+                          width: 16,
+                        ),
+                        DetailsCardPlaceholder(),
+                      ])
+                    : details()
               ],
             ),
           ),

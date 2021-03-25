@@ -36,7 +36,7 @@ class DetailsCard extends StatelessWidget {
                   padding: EdgeInsets.only(left: 20, top: 24), child: image),
               InkWell(
                 onTap: () {
-                  remove(id);
+                  remove();
                 },
                 child: Container(
                     padding: EdgeInsets.only(right: 16, top: 16),
