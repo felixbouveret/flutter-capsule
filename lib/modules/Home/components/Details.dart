@@ -1,8 +1,10 @@
 import 'package:capsule/components/CustomButton.dart';
 import 'package:capsule/components/SideButton.dart';
 import 'package:capsule/components/Wrapper.dart';
+import 'package:capsule/modules/DetailsForm/DetailsForm.dart';
 import 'package:capsule/modules/Home/components/DetailsCard.dart';
 import 'package:capsule/modules/Home/components/DetailsCardPlaceholder.dart';
+import 'package:capsule/utils/showModal.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
@@ -36,7 +38,6 @@ class _DetailsState extends State<Details> {
     setState(() {
       detailsList.removeWhere((item) => item.id == id);
     });
-    print(id);
   }
 
   Widget details() {
@@ -106,11 +107,12 @@ class _DetailsState extends State<Details> {
                     margin: EdgeInsets.only(left: 20),
                     child: SideButton(
                       action: () {
-                        _addDetail(new Detail(
-                            [Colors.blue[700], Colors.blue[800]],
-                            Image.asset('assets/images/samples/cloud.png'),
-                            'It is sunny',
-                            uuid.v4()));
+                        showModal(context, DetailsForm(), 'Add options');
+                        // _addDetail(new Detail(
+                        //     [Colors.blue[700], Colors.blue[800]],
+                        //     Image.asset('assets/images/samples/cloud.png'),
+                        //     'It is sunny',
+                        //     uuid.v4()));
                       },
                     )),
                 detailsList.length <= 0
@@ -131,7 +133,7 @@ class _DetailsState extends State<Details> {
                 label: "Continue the experience",
               ),
             ),
-          )
+          ),
         ],
       ),
     );
