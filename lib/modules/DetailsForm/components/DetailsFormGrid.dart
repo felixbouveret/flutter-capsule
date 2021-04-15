@@ -52,7 +52,8 @@ class _DetailsFormGridState extends State<DetailsFormGrid> {
                       image: Image.asset('assets/images/samples/cloud.png')),
                   DetailsFormCard(
                       label: 'Call me by your name',
-                      image: Image.asset('assets/images/samples/cloud.png')),
+                      background:
+                          AssetImage("assets/images/samples/music.png")),
                   DetailsFormCard(
                       label: 'Add a picture',
                       image: Image.asset('assets/images/samples/cloud.png')),
