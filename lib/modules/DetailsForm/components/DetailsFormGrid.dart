@@ -1,3 +1,4 @@
+import 'package:capsule/modules/DetailsForm/components/DetailsFormCard.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -34,25 +35,29 @@ class _DetailsFormGridState extends State<DetailsFormGrid> {
                   TextStyle(fontSize: 14, color: Colors.white.withOpacity(.6)),
             ),
           ),
-          GridView.count(crossAxisCount: 2, children: [
-            // Container(
-            //   height: 100,
-            //   width: 100,
-            //   color: Colors.red,
-            // ),
-            // Container(
-            //   height: 100,
-            //   color: Colors.red,
-            // ),
-            // Container(
-            //   height: 100,
-            //   color: Colors.red,
-            // ),
-            // Container(
-            //   height: 100,
-            //   color: Colors.red,
-            // ),
-          ])
+          Container(
+            margin: EdgeInsets.only(top: 20),
+            child: GridView.count(
+                crossAxisSpacing: 16,
+                mainAxisSpacing: 16,
+                crossAxisCount: 2,
+                primary: false,
+                shrinkWrap: true,
+                children: [
+                  DetailsFormCard(
+                      label: 'What’s the weather like?',
+                      image: Image.asset('assets/images/samples/cloud.png')),
+                  DetailsFormCard(
+                      label: 'Add a color',
+                      image: Image.asset('assets/images/samples/cloud.png')),
+                  DetailsFormCard(
+                      label: 'Call me by your name',
+                      image: Image.asset('assets/images/samples/cloud.png')),
+                  DetailsFormCard(
+                      label: 'Add a picture',
+                      image: Image.asset('assets/images/samples/cloud.png')),
+                ]),
+          )
         ],
       ),
     );

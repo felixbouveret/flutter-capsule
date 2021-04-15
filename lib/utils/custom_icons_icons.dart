@@ -19,7 +19,7 @@ class CustomIcons {
   CustomIcons._();
 
   static const _kFontFam = 'CustomIcons';
-  static const _kFontPkg = null;
+  static const String _kFontPkg = null;
 
   static const IconData icn_home =
       IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
@@ -63,4 +63,8 @@ class CustomIcons {
       IconData(0xe815, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData addfriend =
       IconData(0xe816, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData arrow_left =
+      IconData(0xe817, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData arrow_right =
+      IconData(0xe818, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

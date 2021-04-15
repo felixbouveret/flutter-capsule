@@ -16,7 +16,7 @@ Future showModal(context, child, title) {
         return Container(
           height: double.infinity,
           padding: EdgeInsets.only(top: 64, left: 24, right: 24),
-          child: ListView(
+          child: Column(
             children: [
               Container(
                 margin: EdgeInsets.only(bottom: 40),
@@ -27,7 +27,7 @@ Future showModal(context, child, title) {
                         Navigator.pop(context);
                       },
                       child: Icon(
-                        CustomIcons.arrowright,
+                        CustomIcons.arrow_left,
                         color: Colors.white,
                       ),
                     ),
@@ -39,7 +39,11 @@ Future showModal(context, child, title) {
                   ],
                 ),
               ),
-              child
+              Expanded(
+                child: ListView(
+                  children: [child],
+                ),
+              ),
             ],
           ),
         );

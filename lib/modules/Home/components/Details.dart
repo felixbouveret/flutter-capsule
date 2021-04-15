@@ -107,12 +107,12 @@ class _DetailsState extends State<Details> {
                     margin: EdgeInsets.only(left: 20),
                     child: SideButton(
                       action: () {
-                        showModal(context, DetailsForm(), 'Add options');
-                        // _addDetail(new Detail(
-                        //     [Colors.blue[700], Colors.blue[800]],
-                        //     Image.asset('assets/images/samples/cloud.png'),
-                        //     'It is sunny',
-                        //     uuid.v4()));
+                        showModal(context, DetailsForm(
+                          action: (color, image, text) {
+                            _addDetail(
+                                new Detail(color, image, text, uuid.v4()));
+                          },
+                        ), 'Add options');
                       },
                     )),
                 detailsList.length <= 0

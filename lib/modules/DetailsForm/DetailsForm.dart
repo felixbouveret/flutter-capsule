@@ -7,7 +7,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class DetailsForm extends StatefulWidget {
-  DetailsForm({Key key}) : super(key: key);
+  DetailsForm({Key key, this.action}) : super(key: key);
+
+  final Function action;
 
   @override
   _DetailsFormState createState() => _DetailsFormState();
@@ -57,9 +59,20 @@ class _DetailsFormState extends State<DetailsForm> {
           desc:
               'Some elements could help us to create a playlist that suits you a 100%',
         ),
-        CustomButton(
-          label: 'Add options',
-          isPurple: true,
+        Container(
+          margin: EdgeInsets.only(top: 20),
+          child: CustomButton(
+            label: 'Add options',
+            isPurple: true,
+            action: () {
+              widget.action(
+                [Colors.blue[700], Colors.blue[800]],
+                Image.asset('assets/images/samples/cloud.png'),
+                'It is sunny',
+              );
+              Navigator.pop(context);
+            },
+          ),
         )
       ],
     );
