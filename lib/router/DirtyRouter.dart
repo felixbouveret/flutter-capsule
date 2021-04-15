@@ -11,10 +11,13 @@ class DirtyRouter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return currentTab == TabItem.home
-        ? MyHomePage()
-        : currentTab == TabItem.settings
-            ? ParamsPage()
-            : Container();
+    switch (currentTab) {
+      case TabItem.home:
+        return MyHomePage();
+      case TabItem.settings:
+        return ParamsPage();
+      default:
+        return Container();
+    }
   }
 }
