@@ -1,4 +1,6 @@
+import 'package:capsule/components/customDialog.dart';
 import 'package:capsule/modules/DetailsForm/components/DetailsFormCard.dart';
+import 'package:capsule/modules/DetailsForm/components/DetailsWeatherPopup.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -15,6 +17,19 @@ class DetailsFormGrid extends StatefulWidget {
 }
 
 class _DetailsFormGridState extends State<DetailsFormGrid> {
+  var weather;
+
+  void _setWeather(Object data) {
+    setState(() {
+      if (weather != null) {
+        weather = null;
+      } else {
+        weather = data;
+      }
+    });
+    print(data);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -46,17 +61,37 @@ class _DetailsFormGridState extends State<DetailsFormGrid> {
                 children: [
                   DetailsFormCard(
                       label: 'What’s the weather like?',
-                      image: Image.asset('assets/images/samples/cloud.png')),
+                      selectedImage: weather,
+                      defaultImage:
+                          Image.asset('assets/images/samples/cloud.png'),
+                      onTap: () {
+                        weather == null
+                            ? showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return DetailsWeatherPopup(
+                                    callback: (weather) {
+                                      _setWeather(weather);
+                                    },
+                                  );
+                                })
+                            : _setWeather(weather);
+                      }),
                   DetailsFormCard(
-                      label: 'Add a color',
-                      image: Image.asset('assets/images/samples/cloud.png')),
+                    label: 'Add a color',
+                    selectedImage: null,
+                    defaultImage:
+                        Image.asset('assets/images/samples/cloud.png'),
+                  ),
                   DetailsFormCard(
                       label: 'Call me by your name',
                       background:
                           AssetImage("assets/images/samples/music.png")),
                   DetailsFormCard(
                       label: 'Add a picture',
-                      image: Image.asset('assets/images/samples/cloud.png')),
+                      selectedImage: null,
+                      defaultImage:
+                          Image.asset('assets/images/samples/cloud.png')),
                 ]),
           )
         ],

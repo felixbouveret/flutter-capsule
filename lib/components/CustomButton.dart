@@ -25,19 +25,21 @@ class CustomButton extends StatelessWidget {
       textColor = Colors.white;
     }
 
-    return InkWell(
-        onTap: action,
-        child: Container(
-          width: double.infinity,
-          padding: EdgeInsets.symmetric(vertical: 20),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8), color: backColor),
-          child: Text(label,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 15,
-                color: textColor,
-              )),
-        ));
+    return Material(
+      child: InkWell(
+          onTap: action,
+          child: Container(
+            width: double.infinity,
+            padding: EdgeInsets.symmetric(vertical: 20),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8), color: backColor),
+            child: Text(label,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 15,
+                  color: textColor,
+                )),
+          )),
+    );
   }
 }
